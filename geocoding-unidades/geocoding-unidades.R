@@ -41,10 +41,15 @@ unidade_falta_dados <- dados_geocoding |>
   dplyr::filter(is.na(lat)) |>
   dplyr::pull(unidade)
 
-arquivos_unidade_falta_dados <- paste0("geocoding-unidades/dados/", unidade_falta_dados, ".csv")
+# arquivos_unidade_falta_dados <- paste0("geocoding-unidades/dados/", unidade_falta_dados, ".csv")
 
-rstudioapi::navigateToFile(arquivos_unidade_falta_dados[4])
+# rstudioapi::navigateToFile(arquivos_unidade_falta_dados[7])
 
 # fs::file_delete(paste0("geocoding-unidades/dados/", unidade_falta_dados, ".csv"))
 # 
 # purrr::map(unidade_falta_dados, salvar_geocode, .progress = TRUE)
+
+
+if(length(unidade_falta_dados) == 0) {
+  write_csv(dados_geocoding, "geocoding-unidades/dados-geocoding.csv")
+} 
