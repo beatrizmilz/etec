@@ -41,7 +41,9 @@ unidade_falta_dados <- dados_geocoding |>
   dplyr::filter(is.na(lat)) |>
   dplyr::pull(unidade)
 
-rstudioapi::navigateToFile(paste0("geocoding-unidades/dados/", unidade_falta_dados, ".csv"))
+arquivos_unidade_falta_dados <- paste0("geocoding-unidades/dados/", unidade_falta_dados, ".csv")
+
+rstudioapi::navigateToFile(arquivos_unidade_falta_dados[4])
 
 # fs::file_delete(paste0("geocoding-unidades/dados/", unidade_falta_dados, ".csv"))
 # 
