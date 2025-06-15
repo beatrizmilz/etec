@@ -22,12 +22,6 @@ ui <- page_sidebar(
       options = list(`actions-box` = TRUE),
       multiple = TRUE
     ),
-    prettySwitch(
-      inputId = "apenas_ensino_medio",
-      label = "Apenas Ensino Médio",
-      fill = FALSE,
-      status = "primary"
-    ),
     pickerInput(
       inputId = "municipio",
       label = "Município:",
@@ -53,8 +47,12 @@ ui <- page_sidebar(
       ),
       multiple = TRUE
     ),
-    
-    
+    prettySwitch(
+      inputId = "apenas_ensino_medio",
+      label = "Apenas Ensino Médio",
+      fill = FALSE,
+      status = "primary"
+    ),    
     pickerInput(
       inputId = "curso",
       label = "Curso:",
@@ -72,6 +70,7 @@ ui <- page_sidebar(
   ),
   layout_columns(
     fill = FALSE,
+    fillable = FALSE,
     value_box(
       title = "Unidades",
       value = textOutput("value_box_unidades"),
