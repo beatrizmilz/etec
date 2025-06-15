@@ -43,7 +43,7 @@ ui <- page_sidebar(
     pickerInput(
       inputId = "unidade",
       label = "Unidade:",
-      choices = unique(dados$unidade_pad),
+      choices = sort(unique(dados$unidade_pad)),
       selected = unique(dados$unidade_pad),
       
       options = pickerOptions(
@@ -58,7 +58,7 @@ ui <- page_sidebar(
     pickerInput(
       inputId = "curso",
       label = "Curso:",
-      choices = unique(dados$curso_resumido),
+      choices = sort(unique(dados$curso_resumido)),
       selected = unique(dados$curso_resumido),
       options = pickerOptions(
         liveSearch = TRUE,
