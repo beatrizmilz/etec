@@ -15,14 +15,6 @@ ui <- page_sidebar(
     title = "Filtros",
     width = "30%",
     pickerInput(
-      inputId = "periodo",
-      label = "Período:",
-      choices = c("Manhã", "Manhã e Tarde", "Tarde", "Noite", "On-line"),
-      selected = unique(dados$periodo),
-      options = list(`actions-box` = TRUE),
-      multiple = TRUE
-    ),
-    pickerInput(
       inputId = "municipio",
       label = "Município:",
       choices = sort(unique(dados$name_muni)),
@@ -47,6 +39,14 @@ ui <- page_sidebar(
       ),
       multiple = TRUE
     ),
+    pickerInput(
+      inputId = "periodo",
+      label = "Período:",
+      choices = c("Manhã", "Manhã e Tarde", "Tarde", "Noite", "On-line"),
+      selected = unique(dados$periodo),
+      options = list(`actions-box` = TRUE),
+      multiple = TRUE
+    ),    
     prettySwitch(
       inputId = "apenas_ensino_medio",
       label = "Apenas Ensino Médio",
