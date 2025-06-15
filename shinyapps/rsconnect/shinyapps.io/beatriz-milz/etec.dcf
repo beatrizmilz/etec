@@ -1,0 +1,13 @@
+name: etec
+title: etec
+username: beatriz-milz
+account: beatriz-milz
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14935627
+bundleId: 10460777
+url: https://beatriz-milz.shinyapps.io/etec/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: dados.R
