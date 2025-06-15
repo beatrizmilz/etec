@@ -49,7 +49,7 @@ ui <- page_sidebar(
     ),    
     prettySwitch(
       inputId = "apenas_ensino_medio",
-      label = "Apenas Ensino Médio",
+      label = "Apenas cursos vinculados ao Ensino Médio",
       fill = FALSE,
       status = "primary"
     ),    
