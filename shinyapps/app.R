@@ -66,7 +66,8 @@ ui <- page_sidebar(
         width = "100%"
       ),
       multiple = TRUE
-    )
+    ),
+    downloadButton("download_dados", "Baixar tabela")
     
   ),
   layout_columns(
@@ -232,6 +233,15 @@ server <- function(input, output) {
       )
   })
   
+    # Download dos dados filtrados
+  output$download_dados <- downloadHandler(
+    filename = function() {
+      paste0("dados_etec_filtrados_", Sys.Date(), ".csv")
+    },
+    content = function(file) {
+      write_csv(dados_filtrados(), file)
+    }
+  )
 }
 
 # Run the application
