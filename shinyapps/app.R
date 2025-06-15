@@ -105,7 +105,38 @@ ui <- page_sidebar(
 
 
 # Define server logic required to draw a histogram
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  # Reatividade em cascata
+  observeEvent(input$municipio, {
+    unidades_filtradas <- dados |> 
+      filter(name_muni %in% input$municipio) |> 
+      distinct(unidade_pad) |> 
+      arrange(unidade_pad) |> 
+      pull()
+    
+    updatePickerInput(session, "unidade", choices = unidades_filtradas, selected = unidades_filtradas)
+  })
+  
+  observe({
+    cursos_filtrados <- dados |> 
+      filter(periodo %in% input$periodo,
+        unidade_pad %in% input$unidade) 
+    
+    if (input$apenas_ensino_medio) {
+      cursos_filtrados <- cursos_filtrados |>
+        filter(str_starts(curso, "Ensino Médio"))
+    }
+    
+    vetor_cursos <- cursos_filtrados |> 
+      distinct(curso_resumido) |> 
+      arrange(curso_resumido) |> 
+      pull()
+    
+    updatePickerInput(session, "curso", choices = vetor_cursos, selected = vetor_cursos)
+  }) |> 
+    bindEvent(input$unidade, input$periodo, input$ensino_medio)
+  
   dados_filtrados <- reactive({
     dados_filtrados <- dados |>
       filter(
